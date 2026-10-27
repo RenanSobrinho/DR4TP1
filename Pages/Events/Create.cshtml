@@ -1,0 +1,38 @@
+﻿@page
+@model ProductCatalog.Pages.Events.CreateModel
+@{
+    ViewData["Title"] = "Cadastrar evento";
+}
+
+<h1>Cadastrar evento</h1>
+
+<nav>
+    <a asp-page="/Index">Início</a> |
+    <a asp-page="/AddProduct">Cadastrar produto</a>
+</nav>
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <label asp-for="Title">Título</label>
+    <input asp-for="Title" />
+    <span asp-validation-for="Title"></span>
+
+    <label asp-for="Date">Data</label>
+    <input asp-for="Date" type="datetime-local" />
+    <span asp-validation-for="Date"></span>
+
+    <label asp-for="Location">Local</label>
+    <input asp-for="Location" />
+    <span asp-validation-for="Location"></span>
+
+    <button type="submit">Cadastrar evento</button>
+</form>
+
+@if (Model.Submitted)
+{
+    <h2>Evento recebido</h2>
+    <p>Título: @Model.Title</p>
+    <p>Data: @Model.Date.ToString("g")</p>
+    <p>Local: @Model.Location</p>
+}
